@@ -1,0 +1,47 @@
+{% include 'header.html.twig' %}
+
+<h2> List of Users </h2>
+<a href="/admin/show/user">Click here to see less Info</a>
+<table border="1">
+    <tr>
+        <td> _id_ </td>
+        <td> _Name_ </td>
+        <td style="display: none"> Role </td>
+        <td> Status </td>
+        <td>Job</td>
+        <td>Year of Exp</td>
+        <td>Gender</td>
+        <td>Location</td>
+        <td>Actions</td>
+    </tr>
+    {% for info in infos %}
+    <tr>
+        <td>{{ info.userid }}</td>
+        <td>{{ info.username }}</td>
+        <td style="display: none">{{info.role}}</td>
+        <td>{{info.status}}</td>
+        <td>{{info.job}}</td>
+        <td>{{info.yearOfExp}}</td>
+        <td>{{info.gender}}</td>
+        <td>{{info.location}}</td>
+        <td>
+            <a href="/admin/edit/{{info.userid}}/{{info.username}} ">Edit</a> 
+            <a href="/show/info/{{info.userid}}">Show</a>
+            <a href="#" onclick="confirmDelete('{{ info.userid }}', '{{ info.username }}')">Delete</a>
+            {% if info.status == 'non_approved'%}
+                <a href="/admin/approve/{{info.userid}}">Approve</a>
+            {% endif %}
+        </td>
+    </tr>  
+    {% endfor %}
+</table>
+
+
+
+<script>
+    function confirmDelete(userId, username) {
+        if (confirm("Are you sure you want to delete user " + username + "?")) {
+            window.location.href = "/admin/delete/user/" + userId;
+        }
+    }
+</script>

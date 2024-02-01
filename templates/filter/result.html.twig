@@ -1,0 +1,35 @@
+{% include 'header.html.twig' %}
+
+<h2> List of Meet Requirement Users </h2>
+<table border="1">
+    <tr>
+        <td> _id_ </td>
+        <td> _Name_ </td>
+        <td> _Status_ </td>
+        <td> _Job_ </td>
+        <td> _Year of experience_ </td>
+        <td>_Gender_</td>
+        <td>_Location_</td>
+    </tr>
+    {% for info in fullInfo %}
+    <tr>
+        <td>{{ info.id }}</td>
+        <td>{{ info.username }}</td>
+        <td>{{ info.status }}</td>
+        <td>{{ info.job }}</td>
+        <td>{{ info.yoe }}</td>
+        <td>{{ info.gender }}</td>
+        <td>{{ info.location }}</td>
+    </tr>  
+    {% endfor %}
+</table>
+
+<a href="/filter">Try again</a>
+
+<script>
+    function confirmDelete(userId, username) {
+        if (confirm("Are you sure you want to delete user " + username + "?")) {
+            window.location.href = "/admin/delete/user/" + userId;
+        }
+    }
+</script>

@@ -1,0 +1,14 @@
+{% include('header.html.twig') %}
+
+<h3>Infomation of '{{user_name}}'</h3>
+id: {{user_id}}<br>
+username: {{user_name}}<br>
+role: {{user_info.role}}<br>
+status: {{user_info.status}}<br>
+job: {{user_info.job}}<br>
+Year of experiences: {{user_info.yearOfExp}}<br>
+gender: {{user_info.gender}}<br>
+location: {{user_info.location}}<br>
+
+<a href="/admin/show/user">Back</a>
+

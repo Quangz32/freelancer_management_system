@@ -1,0 +1,32 @@
+{% include 'header.html.twig' %}
+
+<h2> List of Users </h2>
+<a href="/admin/show/all/info">Click here to see all Info</a>
+<table border="1">
+    <tr>
+        <td> _id_ </td>
+        <td> _Name_ </td>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>
+            <a href="/admin/edit/{{user.id}}/{{user.username}} ">Edit</a> 
+            <a href="/show/info/{{user.id}}">Show</a>
+            <a href="#" onclick="confirmDelete('{{ user.id }}', '{{ user.username }}')">Delete</a>
+
+        </td>
+    </tr>  
+    {% endfor %}
+</table>
+
+
+
+<script>
+    function confirmDelete(userId, username) {
+        if (confirm("Are you sure you want to delete user " + username + "?")) {
+            window.location.href = "/admin/delete/user/" + userId;
+        }
+    }
+</script>
